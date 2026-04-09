@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Register | ServiceDesk</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🌌 GALAXY BACKGROUND */
+body{
+background: radial-gradient(circle at top, #1e1b4b, #0f172a, #020617);
+color:#e5e7eb;
+font-family:'Inter',sans-serif;
+
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+/* Glow */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background: radial-gradient(circle, rgba(139,92,246,0.15), transparent 70%);
+pointer-events:none;
+}
+
+/* CARD */
+.register-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:14px;
+backdrop-filter:blur(12px);
+box-shadow:0 0 25px rgba(139,92,246,0.15);
+padding:30px;
+}
+
+/* HEADINGS */
+h2{
+font-family:'Poppins',sans-serif;
+font-weight:600;
+}
+
+/* INPUT */
+.form-control{
+background:white;
+border:none;
+border-radius:8px;
+padding:10px;
+}
+
+.form-control:focus{
+border:1px solid #8b5cf6;
+box-shadow:0 0 0 2px rgba(139,92,246,0.2);
+}
+
+/* BUTTON */
+.btn-register{
+background:linear-gradient(135deg,#22c55e,#15803d);
+border:none;
+color:white;
+font-weight:500;
+padding:10px;
+transition:0.3s;
+}
+
+.btn-register:hover{
+box-shadow:0 0 12px rgba(34,197,94,0.6);
+transform:translateY(-1px);
+}
+
+/* LOGIN LINK */
+.login-link a{
+color:#a78bfa;
+text-decoration:none;
+}
+.login-link a:hover{
+text-decoration:underline;
+}
+
+/* FOOTER */
+footer{
+position:absolute;
+bottom:0;
+width:100%;
+text-align:center;
+padding:10px;
+color:#aaa;
+font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-md-4">
+
+<div class="register-card">
+
+<h2 class="text-center mb-4">Create Account</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert text-center"
+             style="background:rgba(239,68,68,0.2); color:#fca5a5; border:none;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="mb-3">
+<input type="text" name="username" placeholder="Username" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<input type="email" name="email" placeholder="Email" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<input type="password" name="password" placeholder="Password" class="form-control" required>
+</div>
+
+<button class="btn btn-register w-100">Register</button>
+
+</form>
+
+<p class="text-center mt-3 login-link">
+Already have an account?
+<a href="/login/">Login</a>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer class="text-center mt-5 p-3 text-white">
+ServiceDesk © 2026 | Complaint Management System
+</footer>
+
+</body>
+</html>
